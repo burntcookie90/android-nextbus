@@ -3,5 +3,7 @@
 
     <string name="hello">Hello World, NextBusActivity!</string>
     <string name="app_name">NextBus</string>
+    <string name="stateSelect">Select a State!</string>
+    <string name="main_no_states">No states to display</string>
 
 </resources>
