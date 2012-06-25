@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class AgencySelectorActivity extends ListActivity {
-	private static final String TAG = NextBusActivity.class.getSimpleName();
+	private static final String TAG = AgencySelectorActivity.class.getSimpleName();
 	String state;
 	ArrayList<String> agencyList;
 	int agencyCount,agencyURLCount;

@@ -12,9 +12,13 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class DirectionSelector extends ListActivity {
-	private static final String TAG = NextBusActivity.class.getSimpleName();
+	private static final String TAG = DirectionSelector.class.getSimpleName();
 
 	private String route;
 	ArrayList<String> directionList;
@@ -23,48 +27,53 @@ public class DirectionSelector extends ListActivity {
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 
-		Intent intent = getIntent();
+		setContentView(R.layout.direction_selector);
 
-		route = intent.getStringExtra("ROUTE");
-
-		if(route.equals("Tech Trolley")){
-			route = "trolley";
-		}
-		else if(route.equals("Emory Shuttle")){
-			route = "emory";
-		}
-		else if(route.equals("Midnight Rambler")){
-			route = "night";
-		}
-
-		Log.v(TAG,"Routename: " + route);
-
+		directionList = new ArrayList<String>();
 		Document directionSelection;
 
+		Intent intent = getIntent();
+		route = intent.getStringExtra("ROUTE");
+		route = route.replaceAll("&amp;","&");
+		Log.v(TAG,route);
 		try {
-			directionSelection = Jsoup.connect("http://www.nextbus.com/predictor/simpleStopSelector.shtml?a=georgia-tech&r="+route).get();
+			directionSelection = Jsoup.connect("http://nextbus.com"+route).get();
+
 			String title = directionSelection.title();
+
 			Log.v(TAG,title);
 
-			Element table = directionSelection.select("table[class=simstopSelectorTable]").first();
-			String tableText=table.toString();
+			Element table = directionSelection.select("table.simstopSelectorTable").first();
+			String tableText = table.toString();
 			Log.v(TAG,tableText);
-
-			Iterator<Element> ite = table.select("tr").iterator();
+			
+			Iterator<Element> ite = table.select("td.simstopSelectorTH").iterator();
+			ite.next();
+//			Log.v(TAG,ite.next().text());
 			
 			while(ite.hasNext()){
-				directionList.add(ite.next().text());
-				ite.next();
-
-				Log.v(TAG,"Value "+directionCount+": " + directionList.get(directionCount));
-
-				directionCount++;
+				directionList.add(ite.next().text().substring(11));
+				
 			}
-
+			
+			ArrayAdapter<String> arrayAdapter =   new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, directionList);
+			setListAdapter(arrayAdapter);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		// Do something when a list item is clicked
 
+		Toast toast = Toast.makeText(getApplicationContext(), "You just clicked " + l.getItemAtPosition(position), Toast.LENGTH_SHORT);
+		toast.show();
+
+		Intent intent = new Intent(DirectionSelector.this,StopSelector.class);
+		intent.putExtra("ROUTE", directionList.get(position));
+		startActivity(intent);
+
+		super.onListItemClick(l, v, position, id);
 	}
 }

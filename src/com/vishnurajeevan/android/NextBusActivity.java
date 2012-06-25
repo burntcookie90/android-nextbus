@@ -42,7 +42,7 @@ public class NextBusActivity extends ListActivity {
 
 			Element table = stateSelection.select("table[border=1]").first();
 			String tableText = table.toString();
-			Log.v(TAG,tableText);
+//			Log.v(TAG,tableText);
 
 			Iterator<Element> ite = table.select("tr").iterator();
 
@@ -50,7 +50,7 @@ public class NextBusActivity extends ListActivity {
 				stateList.add(ite.next().text());
 
 
-				Log.v(TAG,"Value "+stateCount+": " + stateList.get(stateCount));
+//				Log.v(TAG,"Value "+stateCount+": " + stateList.get(stateCount));
 
 				stateCount++;
 			}

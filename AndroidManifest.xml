@@ -22,6 +22,7 @@
         <activity android:name="AgencySelectorActivity"></activity>
         <activity android:name="RouteSelector"></activity>
         <activity android:name="DirectionSelector"></activity>
+        <activity android:name="StopSelector"></activity>
     </application>
 
 </manifest>
