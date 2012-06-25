@@ -10,7 +10,10 @@ import org.jsoup.nodes.Element;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class NextBusActivity extends ListActivity {
 	private static final String TAG = NextBusActivity.class.getSimpleName();
@@ -32,8 +35,6 @@ public class NextBusActivity extends ListActivity {
 
 		try {
 			stateSelection = Jsoup.connect("http://www.nextbus.com/predictor/simpleRegionSelector.shtml").get();
-
-			//					stateSelection = Jsoup.parse("http://www.nextbus.com/predictor/simpleRegionSelector.shtml");
 
 			String title = stateSelection.title();
 			Log.v(TAG,title);
@@ -64,13 +65,11 @@ public class NextBusActivity extends ListActivity {
 			e.printStackTrace();
 		}
 
-		//		ArrayList<String> your_array_list = new ArrayList<String>();
-		//        your_array_list.add("foo");
-		//        your_array_list.add("bar");
-		//        // This is the array adapter, it takes the context of the activity as a first // parameter, the type of list view as a second parameter and your array as a third parameter
-		//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, your_array_list);
-		//        Log.v(TAG,""+arrayAdapter.getItem(0));
-		//        setListAdapter(arrayAdapter); 
-
 	}
+	
+	@Override 
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        // Do something when a list item is clicked
+		Toast toast = Toast.makeText(getApplicationContext(),"clicked something", Toast.LENGTH_SHORT);
+    }
 }
