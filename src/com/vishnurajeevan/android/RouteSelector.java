@@ -84,8 +84,8 @@ public class RouteSelector extends ListActivity {
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		// Do something when a list item is clicked
 
-		Toast toast = Toast.makeText(getApplicationContext(), "You just clicked " + l.getItemAtPosition(position), Toast.LENGTH_SHORT);
-		toast.show();
+//		Toast toast = Toast.makeText(getApplicationContext(), "You just clicked " + l.getItemAtPosition(position), Toast.LENGTH_SHORT);
+//		toast.show();
 
 		Intent intent = new Intent(RouteSelector.this,DirectionSelector.class);
 		intent.putExtra("ROUTE", route_URL_List.get(position));
