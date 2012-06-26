@@ -33,7 +33,8 @@ public class PredictionDisplay extends Activity{
 		Intent intent = getIntent();
 		stop = intent.getStringExtra("STOP");
 		Log.v(TAG,"before cleansing: "+stop);
-		stop = stop.substring(0,6)+"Prediction"+stop.substring(20);
+		if(!stop.substring(0,16).equals("simplePrediction"))
+			stop = stop.substring(0,6)+"Prediction"+stop.substring(20);
 		stop = stop.replaceAll("&amp;","&");
 		Log.v(TAG,stop);
 		Document predicitonDisplay;
