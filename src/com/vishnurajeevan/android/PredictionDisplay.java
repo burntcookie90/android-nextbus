@@ -48,7 +48,7 @@ public class PredictionDisplay extends Activity{
 			
 			Element table = predicitonDisplay.select("table[cellspacing=0]").first();
 			String tableText = table.toString();
-			Log.v(TAG,tableText);
+//			Log.v(TAG,tableText);
 			
 			Iterator<Element> ite = table.select("div.right").iterator();
 			

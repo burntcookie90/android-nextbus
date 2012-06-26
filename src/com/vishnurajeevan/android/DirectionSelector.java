@@ -45,7 +45,7 @@ public class DirectionSelector extends ListActivity {
 
 			Element table = directionSelection.select("table.simstopSelectorTable").first();
 			String tableText = table.toString();
-			Log.v(TAG,tableText);
+//			Log.v(TAG,tableText);
 			
 			Iterator<Element> ite = table.select("td.simstopSelectorTH").iterator();
 			ite.next();

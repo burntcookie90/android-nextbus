@@ -50,7 +50,7 @@ public class AgencySelectorActivity extends ListActivity {
 
 			Element table = agencySelection.select("table[border=1]").first();
 			String tableText = table.toString();
-			Log.v(TAG,tableText);
+//			Log.v(TAG,tableText);
 
 			Iterator<Element> ite = table.select("tr").iterator();
 			//			Iterator<Element> ite_url = table.select("a").iterator();

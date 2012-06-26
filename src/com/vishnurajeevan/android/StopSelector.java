@@ -51,7 +51,7 @@ public class StopSelector extends ListActivity{
 			
 			Element table = stopSelection.select("td.simstopSelectorTD.top").get(directionNumber);
 			String tableText = table.toString();
-			Log.v(TAG,tableText);
+//			Log.v(TAG,tableText);
 			
 			Iterator<Element> ite = table.select("tr").iterator();
 			

@@ -49,7 +49,7 @@ public class RouteSelector extends ListActivity {
 
 			Element table = routeSelection.select("table[border=1]").first();
 			String tableText = table.toString();
-			Log.v(TAG,tableText);
+//			Log.v(TAG,tableText);
 
 			Iterator<Element> ite = table.select("tr").iterator();
 
