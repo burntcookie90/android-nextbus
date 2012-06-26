@@ -71,7 +71,10 @@ public class DirectionSelector extends ListActivity {
 		toast.show();
 
 		Intent intent = new Intent(DirectionSelector.this,StopSelector.class);
-		intent.putExtra("ROUTE", directionList.get(position));
+		intent.putExtra("ROUTE_URL",route);
+		intent.putExtra("DIRECTION", directionList.get(position));
+		Log.v(TAG,"Passing DIRECTION: "+position+ ": "+directionList.get(position));
+		intent.putExtra("DIRECTION_NUM", position);
 		startActivity(intent);
 
 		super.onListItemClick(l, v, position, id);

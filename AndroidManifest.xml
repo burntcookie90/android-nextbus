@@ -23,6 +23,7 @@
         <activity android:name="RouteSelector"></activity>
         <activity android:name="DirectionSelector"></activity>
         <activity android:name="StopSelector"></activity>
+        <activity android:name="PredictionDisplay"></activity>
     </application>
 
 </manifest>
